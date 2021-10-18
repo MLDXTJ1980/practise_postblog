@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        css properties: width() innerWidth() outerWidth() outerWidth(true)
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        div {
+            width: 600px;
+            margin: 30px auto;
+            border: 1px solid black;
+        }
+        
+        textarea {
+            width: 400px;
+            margin: 20px auto;
+            border: 1px solid black;
+        }
+        
+        ul {
+            width: 400px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>Blog Release </span>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button>post</button>
+        <ul>
+            <li><a href="#">delete</a></li>
+        </ul>
+    </div>
+
+    <script>
+        $(function() {
+            $("button").on({
+                    click: function() {
+                        /* var text = $(this).siblings("textarea").val()
+                                                                                                                                                                                                                                                                                                var li = $("<li>" + text + "<a href='#''>delete</a></li>")
+                                                                                                                                                                                                                                                                                                $("ul").prepend(li) */
+                        var li = $("<li></li>")
+                        li.html($("textarea").val() + "<a href = '#'> delete </a>")
+                        $("ul").prepend(li)
+                        $("textarea").val("")
+                    },
+                })
+                // on 绑定在ul上 删除动态创建的元素
+            $("ul").on("click", "a", function() {
+                $(this).parent().remove()
+            })
+        })
+    </script>
+</body>
+
+</html>
